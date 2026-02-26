@@ -56,10 +56,60 @@ class _AddTaskCardState extends State<AddTaskCard> {
                 SizedBox(width: 8),
 
                 Text(
-                  "Add Task",
+                  'Add Task',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
                 )
                ],
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: taskController,
+              decoration: InputDecoration(
+                labelText: 'Task Name',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.task_alt_outlined),
+              ),
+              textInputAction: TextInputAction.next,
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: durationController,
+              decoration: InputDecoration(
+                labelText: 'Duration (minute)',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.timer_outlined),
+              ),
+              keyboardType: TextInputType.number,
+              textInputAction: TextInputAction.next,
+            ),
+            SizedBox(height: 12),
+            TextField(
+              controller: deadlineController,
+              decoration: InputDecoration(
+                labelText: 'Deadline',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.event_outlined),
+              ),
+              textInputAction: TextInputAction.next,
+            ),
+            SizedBox(height: 12),
+            DropdownButtonFormField<String>(
+              initialValue: priority,
+              decoration: InputDecoration(
+                labelText: 'Priority',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.flag_outlined)
+              ),
+              items: ['High', 'Medium', 'Low']
+                    .map((values) => DropdownMenuItem(value: values,child: Text(values),))
+                    .toList(),
+              onChanged: (value) => setState(() => priority = value),
+            ),
+            SizedBox(height: 16),
+            FilledButton.icon(
+              onPressed: _submit,
+              icon: Icon(Icons.add_rounded),
+              label: Text('Add Task'),
             )
           ],
         ),
