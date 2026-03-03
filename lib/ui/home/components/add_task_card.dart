@@ -86,7 +86,7 @@ class _AddTaskCardState extends State<AddTaskCard> {
             TextField(
               controller: deadlineController,
               decoration: InputDecoration(
-                labelText: 'Deadline',
+                labelText: 'Deadline (Time)',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.event_outlined),
               ),
